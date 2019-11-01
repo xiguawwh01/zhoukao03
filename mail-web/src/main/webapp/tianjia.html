@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+</head>
+<script>
+    var app=angular.module('myApp',[]);
+
+    app.controller("mycontroller",function ($scope,$http) {
+        $scope.mail={
+            topic:"",
+            cont:"",
+            sdate:""
+
+
+        },
+        $scope.ad=function () {
+            alert("123");
+//            $http.post("../mail/tj.do",$scope.mail).success(function (jg) {
+//                location.href="list.html";
+//            })
+        }
+
+
+    })
+</script>
+<body ng-app="myApp" ng-controller="mycontroller">
+<table>
+    <tr>
+        <td>主题<input type="text" ng-model="mail.topic"></td>
+    </tr>
+    <tr>
+        <td>邮件内容<input type="text" ng-model="mail.cont"></td>
+    </tr>
+    <tr>
+        <td>收件人<input type="text" ng-model=""></td>
+    </tr>
+    <tr>
+        <td>发件人邮箱<input type="text" ng-model=""></td>
+    </tr>
+    <tr>
+        <td>发送时间<input type="date" ng-model="mail.sdate"></td>
+    </tr>
+    <tr>
+        <td><input type="button"  ng-click="ad()" value="保存草稿">
+    <button ng-click="ad()">保存草稿</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

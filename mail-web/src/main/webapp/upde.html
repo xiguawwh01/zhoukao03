@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <title>Title</title>
+ <script type="text/javascript">
+     var href=location.href;
+     var id=href.substring(href.indexOf("=")+1)
+     var app=angular.module('myApp',[]);
+
+     app.controller("mycontroller",function ($scope,$http) {
+
+        $scope.getby=function () {
+            alert(id)
+        }
+
+
+
+     })
+
+ </script>
+
+</head>
+<body ng-app="myApp" ng-controller="mycontroller" ng-init="getby()">
+<table>
+    <tr>
+        <td><input type="hidden" ng-model="mail.topic"></td>
+    </tr>
+    <tr>
+        <td>主题<input type="text" ng-model="mail.topic"></td>
+    </tr>
+    <tr>
+        <td>邮件内容<input type="text" ng-model="mail.cont"></td>
+    </tr>
+    <tr>
+        <td>收件人<input type="text" ng-model=""></td>
+    </tr>
+    <tr>
+        <td>发件人邮箱<input type="text" ng-model=""></td>
+    </tr>
+    <tr>
+        <td>发送时间<input type="date" ng-model="mail.sdate"></td>
+    </tr>
+    <tr>
+        <td><input type="button" ng-click="tj()" value="保存草稿">
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

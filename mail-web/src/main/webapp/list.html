@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+</head>
+<script>
+    var app=angular.module('myApp',[]);
+
+    app.controller("mycontroller",function ($scope,$http) {
+        $scope.lists={
+            list:[],
+            user:{
+                name:"",
+                email:""
+            }
+        };
+
+        $scope.list=function () {
+            $http.post("../mail/list.do").success(
+                function (jg) {
+
+                    $scope.lists=jg;
+                }
+            )
+        },
+        $scope.dele=function (id) {
+            alert(id)
+            $http.get("../mail/dele.do?id="+id).success(
+                function (jg) {
+
+                   location.href="list.html";goods
+                }
+            )
+
+        },
+        $scope.yonghu=function () {
+            location.href="yong.html";
+        },
+        $scope.tj=function () {
+            location.href="tianjia.html";
+        }
+
+
+        
+    })
+</script>
+
+<body ng-app="myApp" ng-controller="mycontroller" ng-init="list()">
+<h1>欢迎{{lists.user.uname}}{{lists.user.email}}登陆</h1>
+商品名称<input type="text" ng-model="moh.mohu" >
+<input type="button" ng-click="list()" value="查询" >
+
+<input type="button" ng-click="tj()" value="新建邮箱">
+<table>
+    <tr>
+        <td>序号</td>
+        <td>主题</td>
+        <td>邮件内容</td>
+        <td>发件人名字</td>
+        <td>发件人邮箱</td>
+        <td>收件人名字</td>
+        <td>收件人邮箱</td>
+        <td>发送时间</td>
+        <td>状态</td>
+        <td>操作</td>
+    </tr>
+    <tr ng-repeat="mail in lists.list">
+        <td>{{mail.id}}</td>
+        <td>{{mail.topic}}</td>
+        <td>{{mail.cont}}</td>
+        <td>{{mail.uname}}</td>
+        <td>{{mail.email}}</td>
+        <td>{{mail.suname}}</td>
+        <td>{{mail.semail}}</td>
+        <td>{{mail.sdate}}</td>
+        <td ng-if="mail.sta==1">已发送</td>
+        <td ng-if="mail.sta==0">草稿</td>
+        <td>
+            <a href="tianjia.html.html?id={{mail.id}}">答复</a>
+            <a href="upde.html">编辑</a>
+            <input type="button" ng-click="dele(mail.id)" value="删除">
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><button>首页</button></td>
+        <td></td>
+        <td><button>上页</button></td>
+        <td></td>
+        <td><button>下页</button></td>
+        <td></td>
+        <td><button>尾页</button></td>
+    </tr>
+</table>
+
+</body>
+</html>

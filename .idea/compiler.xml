@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mail-pojo" />
+        <module name="mail-service" />
+        <module name="mail-service-impl" />
+        <module name="mail-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mail-pojo" target="1.7" />
+      <module name="mail-service" target="1.7" />
+      <module name="mail-service-impl" target="1.7" />
+      <module name="mail-web" target="1.7" />
+      <module name="zhoukao03" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

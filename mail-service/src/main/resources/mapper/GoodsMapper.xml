@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.pinyougou.mapper.MailMapper">
+
+	<select id="login" parameterType="java.lang.String" resultType="com.wwh.pojo.User">
+		select * from t_user where uname='${value}'
+	</select>
+
+	<select id="list" resultType="com.wwh.pojo.Mailvo">
+	  select m.id,m.topic,m.cont,m.sdate,m.sta,u.uname,u.email,uu.uname suname,uu.email semail from t_mail m LEFT JOIN t_user u ON m.fid=u.uid LEFT JOIN t_user uu on m.sid=uu.uid
+	</select>
+
+
+	<delete id="dele" parameterType="java.lang.Integer">
+
+		delete from t_mail where id=${value}
+	</delete>
+
+	<insert id="add" parameterType="com.wwh.pojo.Mail">
+		insert into t_mail values (null,#{topic},#{cont},#{sdate},#{sta},#{fid},#{sid})
+	</insert>
+
+
+	<update id="df" parameterType="com.wwh.pojo.Mail">
+		update t_mail set cont=#{cont} where id=#{id}
+	</update>
+	</mapper>
